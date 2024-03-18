@@ -5,7 +5,7 @@
     --font-color: rgb(255, 255, 255);
     --input-height: 45px;
     --border-radius: 45px;
-    --main-color: #399554;
+    --main-color: rgb(57, 149, 84);
 }
 
 .container {
@@ -41,7 +41,7 @@ section {
 }
 
 .green {
-    color: #399554;
+    color: var(--main-color);
 }
 
 .set-alarm p {
@@ -86,9 +86,33 @@ input[type=button] {
 }
 
 input[type=button]:hover {
-    background-color: #48b969;
+    background-color: rgb(72, 185, 105);
 }
 
 input[type=button]:active {
-    background-color: #378b50;
+    background-color: rgb(55, 139, 80);
+}
+
+@media (max-width: 412px) {
+    .time {
+        font-size: 100px;
+    }
+    input[type=button] {
+        width: 130px;
+    }
+    input[type=text] {
+        width: 60px;
+    }
+}
+
+@media (max-width: 331px) {
+    .time {
+        font-size: 80px;
+    }
+    input[type=button] {
+        width: 100px;
+    }
+    input[type=text] {
+        width: 45px;
+    }
 }

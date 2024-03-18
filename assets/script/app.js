@@ -23,13 +23,13 @@ function setInitialTime() {
 window.addEventListener('load', setInitialTime);
 
 //Update the current time and call compareTimes
+let currentSetTime = 0;
 function updateCurrentTime() {
     const currentTime = new Date();
     const hours = currentTime.getHours();
     const minutes = currentTime.getMinutes();
-    let currentSetTime = 0;
     if(`${hours}:${minutes}` != currentSetTime) {
-        compareTimes();
+        console.log(currentSetTime);
         if(minutes >= 10) {
             mainTime.innerText = `${hours}:${minutes}`;
             currentSetTime = `${hours}:${minutes}`;
@@ -38,10 +38,11 @@ function updateCurrentTime() {
             mainTime.innerText = `${hours}:0${minutes}`;
             currentSetTime = `${hours}:0${minutes}`;
         }
+        compareTimes();
     }
 }
 
-//Make the inputs accept 2 numbers maximum only
+//Force the inputs to accept 2 numbers maximum/Numbers only
 function validateInput(input) {
     let value = input.value;
     input.value = value.replace(/\D/g, '').slice(0, 2);
@@ -53,7 +54,7 @@ minutesInput.addEventListener('input', () => {
     validateInput(minutesInput);
 });
 
-//Validate the input to make sure it is within hours/minutes
+//Validate the input to make sure it is within hours/minutes range
 let validHours = false;
 let validMinutes = false;
 function checkValidTime() {
@@ -61,7 +62,7 @@ function checkValidTime() {
     let minutes = minutesInput.value;
     if(hours != '' && hours <=23) {
         validHours = true;
-        hoursInput.style.borderColor = 'rgb(0, 255, 0)';
+        hoursInput.style.borderColor = 'rgb(57, 149, 84';
     }
     else {
         validHours = false;
@@ -69,7 +70,7 @@ function checkValidTime() {
     }
     if(minutes != '' && minutes <=59) {
         validMinutes = true;
-        minutesInput.style.borderColor = 'rgb(0, 255, 0)';
+        minutesInput.style.borderColor = 'rgb(57, 149, 84';
     }
     else {
         validMinutes = false;
@@ -91,7 +92,7 @@ function clearInput() {
 }
 setAlarm.addEventListener('click', () => {
     checkValidTime();
-    setInterval(clearInput, 500);
+    setInterval(clearInput, 400);
 });
 
 //Check if its alarm time
