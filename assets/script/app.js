@@ -11,14 +11,15 @@ alarm.type = 'audio/mp3';
 //Set the main time on page load
 function setInitialTime() {
     const currentTime = new Date();
-    const hours = currentTime.getHours();
-    const minutes = currentTime.getMinutes();
-    if(minutes >= 10) {
-        mainTime.innerText = `${hours}:${minutes}`;
+    let hours = currentTime.getHours();
+    let minutes = currentTime.getMinutes();
+    if(hours < 10) {
+        hours = `0${hours}`;
     }
-    else {
-        mainTime.innerText = `${hours}:0${minutes}`;
+    if(minutes < 10) {
+        minutes = `0${minutes}`;
     }
+    mainTime.innerText = `${hours}:${minutes}`;
 }
 window.addEventListener('load', setInitialTime);
 
@@ -26,18 +27,17 @@ window.addEventListener('load', setInitialTime);
 let currentSetTime = 0;
 function updateCurrentTime() {
     const currentTime = new Date();
-    const hours = currentTime.getHours();
-    const minutes = currentTime.getMinutes();
+    let hours = currentTime.getHours();
+    let minutes = currentTime.getMinutes();
+    if(hours < 10) {
+        hours = `0${hours}`;
+    }
+    if(minutes < 10) {
+        minutes = `0${minutes}`;
+    }
     if(`${hours}:${minutes}` != currentSetTime) {
-        console.log(currentSetTime);
-        if(minutes >= 10) {
-            mainTime.innerText = `${hours}:${minutes}`;
-            currentSetTime = `${hours}:${minutes}`;
-        }
-        else {
-            mainTime.innerText = `${hours}:0${minutes}`;
-            currentSetTime = `${hours}:0${minutes}`;
-        }
+        mainTime.innerText = `${hours}:${minutes}`;
+        currentSetTime = `${hours}:${minutes}`;
         compareTimes();
     }
 }
@@ -60,17 +60,29 @@ let validMinutes = false;
 function checkValidTime() {
     let hours = hoursInput.value;
     let minutes = minutesInput.value;
-    if(hours != '' && hours <=23) {
-        validHours = true;
-        hoursInput.style.borderColor = 'rgb(57, 149, 84';
+    if(hours != '' && hours.toString().length == 2) {
+        if(hours <= 23) {
+            validHours = true;
+            hoursInput.style.borderColor = 'rgb(57, 149, 84)';
+        }
+        else if(hours < 25 && minutes === '00') {
+            validHours = true;
+            hoursInput.style.borderColor = 'rgb(57, 149, 84)';
+        }
+        else {
+            console.log(hours);
+            validHours = false;
+            hoursInput.style.borderColor = 'rgb(255, 0, 0)';
+        }
     }
     else {
+        console.log(minutes);
         validHours = false;
         hoursInput.style.borderColor = 'rgb(255, 0, 0)';
     }
-    if(minutes != '' && minutes <=59) {
+    if(minutes != '' && minutes <=59 && minutes.toString().length == 2) {
         validMinutes = true;
-        minutesInput.style.borderColor = 'rgb(57, 149, 84';
+        minutesInput.style.borderColor = 'rgb(57, 149, 84)';
     }
     else {
         validMinutes = false;
