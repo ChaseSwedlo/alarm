@@ -70,13 +70,11 @@ function checkValidTime() {
             hoursInput.style.borderColor = 'rgb(57, 149, 84)';
         }
         else {
-            console.log(hours);
             validHours = false;
             hoursInput.style.borderColor = 'rgb(255, 0, 0)';
         }
     }
     else {
-        console.log(minutes);
         validHours = false;
         hoursInput.style.borderColor = 'rgb(255, 0, 0)';
     }
