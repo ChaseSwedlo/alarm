@@ -34,9 +34,14 @@ section {
 }
 
 .time {
-    font-size: 110px;
+    font-size: 140px;
     line-height: 1;
     text-align: center;
+    transition-duration: 0.2s;
+}
+
+.green {
+    color: #399554;
 }
 
 .set-alarm p {
@@ -50,7 +55,9 @@ i {
 }
 
 form {
-    margin-top: 27px;
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
 }
 
 input[type=text] {
