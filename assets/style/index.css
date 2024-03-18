@@ -5,6 +5,7 @@
     --font-color: rgb(255, 255, 255);
     --input-height: 45px;
     --border-radius: 45px;
+    --main-color: #399554;
 }
 
 .container {
@@ -44,6 +45,10 @@ section {
     line-height: 1;
 }
 
+i {
+    padding-right: 5px;
+}
+
 form {
     margin-top: 27px;
 }
@@ -57,6 +62,11 @@ input[type=text] {
     margin-right: 10px;
     background-color: rgb(43, 43, 44);
     border: 1px solid rgb(58, 58, 59);
+    transition-duration: 0.2s;
+}
+
+input[type=text]:focus {
+    border-color: var(--main-color);
 }
 
 input[type=button] {
@@ -64,5 +74,14 @@ input[type=button] {
     width: 155px;
     height: var(--input-height);
     border-radius: var(--border-radius);
-    background-color: rgb(57, 149, 84);
+    background-color: var(--main-color);
+    transition-duration: 0.2s;
+}
+
+input[type=button]:hover {
+    background-color: #48b969;
+}
+
+input[type=button]:active {
+    background-color: #378b50;
 }
