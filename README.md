@@ -1,1 +1,1 @@
-Try my alarm here [here](https://chaseswedlo.github.io/my-portfolio/)
+Try my alarm here [here](https://chaseswedlo.github.io/alarm/)
